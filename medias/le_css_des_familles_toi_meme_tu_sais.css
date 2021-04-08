@@ -1,0 +1,28 @@
+html{
+    background-image: url(background.jpg);
+}
+
+body{
+    margin:auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+#phrase{
+    width: 100%;
+}
+
+p{
+    width: 100%;
+}
+
+button{
+    height: 60px;
+    width: 200px;
+    font-size: 15pt;
+    color: white;
+    background-color: green;
+    
+    
+}
