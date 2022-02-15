@@ -1,0 +1,33 @@
+variables:
+  PROJECT_NAME: 
+    value: "kao"
+    description: "project name in /var/www/html/"
+
+stages:
+  - clean-deploy
+  - test
+
+clean-deploy:
+  stage: clean-deploy
+  tags:
+    - localhost
+    - shell
+  script:
+    - rm -rf /var/www/html/$PROJECT_NAME
+    - mkdir /var/www/html/$PROJECT_NAME
+    - cp -r * /var/www/html/$PROJECT_NAME
+
+test:
+  stage: test
+  tags:
+    - localhost
+    - shell
+  script:
+    - echo "Test url"
+    - curl http://${PROJECT_NAME}.papierpain.fr
+
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "web"'
+      when: always
+    - when: never
